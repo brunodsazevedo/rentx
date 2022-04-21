@@ -14,7 +14,7 @@ export const Header = styled.View`
   background-color: ${({ theme }) => theme.colors.header};
 
   justify-content: flex-end;
-  padding: 32px 24px
+  padding: 32px 24px;
 `;
 
 export const HeaderContent = styled.View`
