@@ -1,4 +1,5 @@
 import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
 import {
@@ -12,7 +13,7 @@ import {
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo';
 
-import { Home } from './src/screens/Home';
+import { CarDetails } from './src/screens/CarDetails';
 
 import theme from './src/styles/theme';
 
@@ -30,8 +31,10 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Home />
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider theme={theme}>
+        <CarDetails />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
