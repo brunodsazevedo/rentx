@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
@@ -29,7 +30,17 @@ import gasolineSvg from '../../assets/gasoline.svg';
 import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
 
+type RouteNameType = {
+  navigate: (screen: string) => void;
+}
+
 export function CarDetails() {
+  const navigation = useNavigation<RouteNameType>();
+
+  function handleConfirmRental() {
+    navigation.navigate('Scheduling');
+  }
+
   return(
     <Container>
       <Header>
@@ -71,7 +82,8 @@ export function CarDetails() {
 
       <Footer>
         <Button
-          title="Confirmar"
+          title="Escolher período do aluguel"
+          onPress={handleConfirmRental}
         />
       </Footer>
     </Container>

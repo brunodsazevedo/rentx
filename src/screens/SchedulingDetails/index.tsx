@@ -1,5 +1,6 @@
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
 
@@ -7,7 +8,6 @@ import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
-
 
 import {
   Container,
@@ -42,8 +42,17 @@ import gasolineSvg from '../../assets/gasoline.svg';
 import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
 
+type RouteNameType = {
+  navigate: (screen: string) => void;
+}
+
 export function SchedulingDetails() {
   const theme = useTheme();
+  const navigation = useNavigation<RouteNameType>();
+
+  function handleConfirmRental() {
+    navigation.navigate('SchedulingComplete');
+  }
 
   return(
     <Container>
@@ -116,7 +125,9 @@ export function SchedulingDetails() {
 
       <Footer>
         <Button
-          title="Confirmar"
+          title="Alugar agora"
+          color={theme.colors.success}
+          onPress={handleConfirmRental}
         />
       </Footer>
     </Container>
