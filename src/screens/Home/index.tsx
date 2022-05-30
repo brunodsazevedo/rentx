@@ -20,7 +20,7 @@ import { api } from '../../services/api';
 import { CarDTO } from '../../dtos/CarDTO';
 
 type RouteNameType = {
-  navigate: (screen: string) => void;
+  navigate: (screen: string, params: any) => void;
 }
 
 export function Home() {
@@ -29,8 +29,8 @@ export function Home() {
 
   const navigation = useNavigation<RouteNameType>();
 
-  function handleCarDetails () {
-    navigation.navigate('CarDetails');
+  function handleCarDetails (car: CarDTO) {
+    navigation.navigate('CarDetails', { car });
   }
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export function Home() {
             renderItem={({ item }) => (
               <Car
                 data={item}
-                onPress={handleCarDetails}
+                onPress={() => handleCarDetails(item)}
               />
             )}
           />
