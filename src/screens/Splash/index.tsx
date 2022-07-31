@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
+import { useAuth } from '../../hooks/auth';
+
 import BrandSvg from '../../assets/brand.svg';
 import LogoSvg from '../../assets/logo.svg';
 
@@ -22,6 +24,8 @@ interface NavigationProps {
 }
 
 export function Splash() {
+  const { user } = useAuth();
+
   const navigation = useNavigation<NavigationProps>();
   const splashAnimation = useSharedValue(0);
 
