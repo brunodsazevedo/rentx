@@ -99,6 +99,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         setData(user);
       });
     } catch (error: any) {
+      console.log(error);
       throw new Error(error);
     }
   }

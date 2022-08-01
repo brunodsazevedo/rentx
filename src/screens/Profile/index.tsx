@@ -54,8 +54,21 @@ export function Profile() {
     navigation.goBack();
   }
 
-  async function handleSignOut() {
-    await signOut();
+  function handleSignOut() {
+    Alert.alert(
+      'Tem certeza?',
+      'Se você sair irá precisar de internet para conectar-se novamente.',
+      [
+        {
+          text: 'Cancelar',
+          onPress: () => {},
+        },
+        {
+          text: 'Sair',
+          onPress: () => signOut(),
+        },
+      ]
+    );
   }
 
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
