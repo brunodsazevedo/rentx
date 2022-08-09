@@ -1,8 +1,7 @@
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize';
-
-import { RectButton } from 'react-native-gesture-handler';
+import { Car } from '../../database/model/Car';
 
 interface MyCarsButtonProps {
   children: React.ReactNode;
@@ -41,4 +40,4 @@ export const CarList = styled(FlatList).attrs({
     padding: 24,
   },
   showsVerticalScrollIndicator: false,
-})`` as React.ComponentType as new <CarDTO>() => FlatList<CarDTO>;
+})`` as React.ComponentType as new <CarDTO>() => FlatList<Car>;

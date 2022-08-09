@@ -31,6 +31,7 @@ import {
   Footer,
 } from './styles';
 
+import { Car } from '../../database/model/Car';
 import { CarDTO } from '../../dtos/CarDTO';
 
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
