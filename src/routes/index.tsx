@@ -9,8 +9,9 @@ import { LoadAnimation } from '../components/LoadAnimation';
 export function Routes() {
   const { user, loading } = useAuth();
 
+  if(loading) return <LoadAnimation />;
+
   return (
-    loading ? <LoadAnimation /> :
     <NavigationContainer>
       { user.id ? <AppStackRoutes /> : <AuthRoutes/> }
     </NavigationContainer>

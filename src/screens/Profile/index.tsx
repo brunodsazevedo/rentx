@@ -9,6 +9,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
+import { useNetInfo } from '@react-native-community/netinfo';
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
@@ -47,6 +48,7 @@ export function Profile() {
   const [ name, setName ] = useState(user.name);
   const [ driverLicense, setDriverLicense ] = useState(user.driver_license);
 
+  const netInfo = useNetInfo();
   const theme = useTheme();
   const navigation = useNavigation<NavigationProps>();
 
@@ -72,6 +74,10 @@ export function Profile() {
   }
 
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
+    if(netInfo.isConnected === false && optionSelected === 'passwordEdit') {
+      Alert.alert('Você está offline', 'Para mudar a senha, conecte-se a Internet');
+      return;
+    }
     setOption(optionSelected);
   }
 
